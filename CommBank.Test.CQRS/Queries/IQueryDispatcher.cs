@@ -5,8 +5,8 @@ namespace CommBank.Test.CQRS.Queries
 {
     public interface IQueryDispatcher
     {
-        Task<T> DispatchAsync<TQuery, T>(Action<TQuery> initialiseParameters = null)
+        Task<T> DispatchAsync<Q, T>(Action<Q> initialiseParameters = null)
            where T : class
-           where TQuery : class, IQuery<T>;
+           where Q : class, IQuery<T>;
     }
 }
