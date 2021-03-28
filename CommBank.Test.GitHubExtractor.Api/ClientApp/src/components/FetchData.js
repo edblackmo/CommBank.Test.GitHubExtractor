@@ -5,6 +5,7 @@ export class FetchData extends Component {
     static displayName = FetchData.name;
 
     static handleRowClick(e) {
+        this.props.history.pushState({ repository: e.target.innerText },)
         // FetchData.getUsersCommits(e.target.innerText);
     }
 

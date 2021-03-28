@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CommBank.Test.Contracts.Request
+﻿namespace CommBank.Test.Contracts.Request
 {
     public class AdditionalParameters
     {
