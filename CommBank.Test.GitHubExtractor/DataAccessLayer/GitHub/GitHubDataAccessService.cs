@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System.Net.Http;
-
 using System.Threading.Tasks;
 
 namespace CommBank.Test.GitHubExtractor.DataAccessLayer.GitHub
@@ -20,6 +19,9 @@ namespace CommBank.Test.GitHubExtractor.DataAccessLayer.GitHub
             AddRequiredHeaders(httpClient, token);
                        
             var response = await httpClient.GetAsync(uri);
+
+            //TODO: Implement proper exception handling that will translate exceptions/HTTP codes
+            //to JSOON to be consumed by the front end
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();        

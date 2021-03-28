@@ -2,11 +2,9 @@
 using CommBank.Test.Contracts.Response;
 using CommBank.Test.CQRS.Queries;
 using CommBank.Test.GitHubExtractor.Queries;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Abstractions;
 using System.Web.Http.Description;
 
 namespace CommBank.Test.GitHubExtractor.Api.Controllers
@@ -16,6 +14,7 @@ namespace CommBank.Test.GitHubExtractor.Api.Controllers
     {
         private readonly IQueryDispatcher _queryDispatcher;
 
+        //TODO: Implement automated testing via XUnit/Bddfy/Shouldly or unit testing using MOQ
         public GitHubExtractorController(IQueryDispatcher queryDispatcher)
         {
             _queryDispatcher = queryDispatcher;
