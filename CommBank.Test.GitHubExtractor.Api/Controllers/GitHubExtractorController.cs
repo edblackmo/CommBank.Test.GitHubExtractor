@@ -15,6 +15,7 @@ namespace CommBank.Test.GitHubExtractor.Api.Controllers
         private readonly IQueryDispatcher _queryDispatcher;
 
         //TODO: Implement automated testing via XUnit/Bddfy/Shouldly or unit testing using MOQ
+        //Also we should be using HTTPS given we are passing a username and token to this API
         public GitHubExtractorController(IQueryDispatcher queryDispatcher)
         {
             _queryDispatcher = queryDispatcher;
