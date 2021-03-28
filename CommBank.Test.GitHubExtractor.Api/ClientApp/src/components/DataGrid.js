@@ -1,26 +1,23 @@
 ﻿import React from 'react';
-import axios from 'axios';
 
-
-function RepoDataGrid(props) {
+function CommitsDataGrid(props) {
 
     return (
         <table className='table table-striped' aria-labelledby="tabelLabel">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Full Name (C)</th>
-                    <th>Owner</th>
-                    <th>Login</th>
+                    <th>SHA</th>
+                    <th>Commit Message</th>
+                    <th>Commit Author Name</th>
+                    <th>Commit Author Email</th>
                 </tr>
             </thead>
             <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
+                {props.commits.map(commit =>
+                    <tr key={commit.sha}>
+                        <td>{commit.message}</td>
+                        <td>{commit.author.name}</td>
+                        <td>{commit.author.email}</td>                        
                     </tr>
                 )}
             </tbody>
