@@ -1,0 +1,20 @@
+﻿@model CommBank.Test.Contracts.Response.UserGitRepositories;
+
+<table id="repoTable">
+
+@foreach(var repo in Model.Repositories)
+{
+     <tr>
+         <td>@repo.FullName</td>
+         <td>@repo.Owner</td>
+         <td>@repo.CommitsUrl</td>        
+     </tr>
+}
+
+</table>
+
+<script>
+    $("#repoTable").delegate("tr.rows", "click", function () {
+        
+    });
+</script>
