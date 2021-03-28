@@ -5,12 +5,12 @@ export class FetchData extends Component {
     static displayName = FetchData.name;
 
     static handleRowClick(e) {
-        FetchData.getUsersCommits(e.target.innerText);
+        // FetchData.getUsersCommits(e.target.innerText);
     }
 
     constructor(props) {
         super(props);
-        this.state = { repos: [], loading: true, commits: [], commitsLoading: true };
+        this.state = { repos: [], loading: true };
     }
 
     componentDidMount() {
@@ -62,12 +62,6 @@ export class FetchData extends Component {
         const response = await axios.post("http://localhost:63190/api/git-hub/get-user-repositories/edblackmo/6a507c8cec634e4783404089b464143407085a5e", { "uri": "https://api.github.com" })
         const data = response.data;
         this.setState({ repos: data, loading: false });
-    }
-
-    static async getUsersCommits(repo) {
-        const response = await axios.post("http://localhost:63190/api/git-hub/get-user-commits/edblackmo/6a507c8cec634e4783404089b464143407085a5e", { "uri": "https://api.github.com" })
-        const data = response.data;
-        this.setState({ commits: data, commitsLoading: false });
-    }
+    }   
 }
 
