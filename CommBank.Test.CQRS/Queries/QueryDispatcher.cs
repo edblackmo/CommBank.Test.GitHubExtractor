@@ -12,9 +12,9 @@ namespace CommBank.Test.CQRS.Queries
             _serviceProvider = serviceProvider;
         }
 
-        Task<T> IQueryDispatcher.DispatchAsync<TQuery, T>(Action<TQuery> parameters)
+        Task<T> IQueryDispatcher.DispatchAsync<Q, T>(Action<Q> parameters)
         {
-            var query = (TQuery)_serviceProvider.GetService(typeof(TQuery));            
+            var query = (Q)_serviceProvider.GetService(typeof(Q));            
             parameters?.Invoke(query);
             return query.Dispatch();
         }

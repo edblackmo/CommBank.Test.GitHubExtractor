@@ -31,8 +31,7 @@ export class FetchData extends Component {
                 </thead>
                 <tbody>
                     {repos.map(repo =>
-                        <tr key={repo.fullName} >
-
+                        <tr key={repo.fullName}>
                             <td onClick={FetchData.handleRowClick}>
                                 {repo.fullName}
                             </td>

@@ -13,7 +13,7 @@ namespace CommBank.Test.GitHubExtractor.DataAccessLayer.GitHub
             _httpClientFactory = httpClientFactory;            
         }
 
-        public async Task<T> GetAsync<T>(string uri, string token) 
+        public async Task<T> FetchAsync<T>(string uri, string token) 
         {
             var httpClient = _httpClientFactory.CreateClient();
             AddRequiredHeaders(httpClient, token);

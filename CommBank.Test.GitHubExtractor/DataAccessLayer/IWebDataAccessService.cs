@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace CommBank.Test.GitHubExtractor.DataAccessLayer
 {
     public interface IWebDataAccessService
     {
-        Task<T> GetAsync<T>(string uri, string token);
+        Task<T> FetchAsync<T>(string uri, string token);
     }
 }

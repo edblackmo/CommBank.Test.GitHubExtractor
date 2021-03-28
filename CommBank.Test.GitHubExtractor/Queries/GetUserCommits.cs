@@ -39,7 +39,7 @@ namespace CommBank.Test.GitHubExtractor.Queries
         {
             //TODO: Server side validation of parameters perhaps using a Fluent Validator https://fluentvalidation.net/
             //Any validation errors will then be returned to the client as Json for display
-            var userRepositories = await _dataAccessService.GetAsync<IEnumerable<GitHubCommits>>($"{_additionalParameters.Uri}/repos/{_userName}/{_additionalParameters.Repository}/commits?per_page={_limit}", _token);
+            var userRepositories = await _dataAccessService.FetchAsync<IEnumerable<GitHubCommits>>($"{_additionalParameters.Uri}/repos/{_userName}/{_additionalParameters.Repository}/commits?per_page={_limit}", _token);
             return _mapper.Map<IEnumerable<UserCommits>>(userRepositories);            
         }
     }
