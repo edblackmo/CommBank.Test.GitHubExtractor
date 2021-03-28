@@ -84,9 +84,7 @@ namespace CommBank.Test.GitHubExtractor.Api
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
-            });
-
-           
+            });           
         }
     }
 }

@@ -11,7 +11,9 @@ namespace CommBank.Test.GitHubExtractor.Profiles
             CreateMap<GitHubRepositories, UserGitRepository>();
             CreateMap<Owner, UserGitRepository.RepoOwner>();
             CreateMap<GitHubCommits, UserCommits>();
-           // CreateMap<GitHubRepositories.RepoOwner, UserGitRepositories.RepoOwner>();
+            CreateMap<Commit, UserCommits.GitHubCommit>();
+            CreateMap<Author, UserCommits.Author>();
+            CreateMap<Committer, UserCommits.Committer>();            
         }
     }
 }

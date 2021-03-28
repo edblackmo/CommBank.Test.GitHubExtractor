@@ -13,7 +13,7 @@ namespace CommBank.Test.GitHubExtractor.GitHub.Contracts.Response
     {
         public string Message { get; set; }
         public Author Author { get; set; }
-        public Commiter Commiter { get; set; }
+        public Committer Committer { get; set; }
     }
 
     public class Author
@@ -23,7 +23,7 @@ namespace CommBank.Test.GitHubExtractor.GitHub.Contracts.Response
         public string Date { get; set; }
     }
 
-    public class Commiter
+    public class Committer
     {
         public string Name { get; set; }
         public string Email { get; set; }

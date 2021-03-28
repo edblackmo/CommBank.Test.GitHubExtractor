@@ -21,7 +21,7 @@ namespace CommBank.Test.GitHubExtractor.DataAccessLayer.GitHub
             var response = await httpClient.GetAsync(uri);
 
             //TODO: Implement proper exception handling that will translate exceptions/HTTP codes
-            //to JSOON to be consumed by the front end
+            //to serializable exceptions to be consumed by the front end
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();        

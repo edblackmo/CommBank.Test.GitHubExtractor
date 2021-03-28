@@ -2,17 +2,14 @@
 {
     public class UserCommits
     {
-        public class GitHubCommits
-        {           
-            public string Sha { get; set; }
-            public Commit Commit { get; set; }
-        }
+        public string Sha { get; set; }
+        public GitHubCommit Commit { get; set; }
 
-        public class Commit
+        public class GitHubCommit
         {
             public string Message { get; set; }
             public Author Author { get; set; }
-            public Commiter Commiter { get; set; }
+            public Committer Committer { get; set; }
         }
 
         public class Author
@@ -22,7 +19,7 @@
             public string Date { get; set; }
         }
 
-        public class Commiter
+        public class Committer
         {
             public string Name { get; set; }
             public string Email { get; set; }

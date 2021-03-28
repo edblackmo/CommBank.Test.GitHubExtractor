@@ -25,11 +25,10 @@ namespace CommBank.Test.GitHubExtractor.Api.Controllers
         [ResponseType(typeof(IEnumerable<UserGitRepository>))]
         public async Task<IActionResult> GetAllUserRepositories(string userName, string token, [FromBody] AdditionalParameters additionalParameters)
         {
+            //this will only retrieve PUBLIC repositories
             var results = await _queryDispatcher.DispatchAsync<GetUsersRepositories, IEnumerable<UserGitRepository>>(
                 x => x.SetParams(userName, token, additionalParameters));
-
-            //not found
-
+           
             return Ok(results);
         }
 
@@ -39,9 +38,7 @@ namespace CommBank.Test.GitHubExtractor.Api.Controllers
         public async Task<IActionResult> GetUserCommits(string userName, string token, [FromBody] AdditionalParameters additionalParameters, [FromQuery] int limit)
         {
             var results = await _queryDispatcher.DispatchAsync<GetUserCommits, IEnumerable<UserCommits>>(
-                x => x.SetParams(userName, token, additionalParameters, limit));
-
-            //not found
+                x => x.SetParams(userName, token, additionalParameters, limit));            
 
             return Ok(results);
         }

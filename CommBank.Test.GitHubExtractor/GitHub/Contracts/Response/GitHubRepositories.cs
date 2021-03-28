@@ -5,7 +5,7 @@ namespace CommBank.Test.GitHubExtractor.GitHub.Contracts.Response
     public class GitHubRepositories
     {
         public string Id { get; set; }
-        [JsonProperty("full_name")]
+        [JsonProperty("name")]
         public string FullName { get; set; }     
         public Owner Owner { get; set; }
         public string CommitsUrl { get; set; }     

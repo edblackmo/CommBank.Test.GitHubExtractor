@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import axios from 'axios';
 
 export class FetchData extends Component {
     static displayName = FetchData.name;
-
-    static handleRowClick(e) {
-        this.props.history.pushState({ repository: e.target.innerText },)
-        // FetchData.getUsersCommits(e.target.innerText);
-    }
+    static currentProps = null;
 
     constructor(props) {
         super(props);
         this.state = { repos: [], loading: true };
+        FetchData.currentProps = props;
     }
 
     componentDidMount() {
@@ -33,7 +31,20 @@ export class FetchData extends Component {
                 <tbody>
                     {repos.map(repo =>
                         <tr key={repo.fullName}>
-                            <td onClick={FetchData.handleRowClick}>
+                            <td> <Route render={({ history }) => (
+                                <button
+                                    type='button'
+                                    onClick={() => {
+                                        history.push({
+                                            pathname: '/fetch-data/commits',
+                                            state: { uri: FetchData.currentProps.history.location.state.uri, userName: FetchData.currentProps.history.location.state.userName, token: FetchData.currentProps.history.location.state.token, repo: repo.fullName }
+                                        })
+                                    }}
+                                >
+                                   Click to Retrieve Commits
+                                </button>
+                            )} /></td>
+                            <td>
                                 {repo.fullName}
                             </td>
                             <td>{repo.owner.login}</td>
@@ -52,17 +63,16 @@ export class FetchData extends Component {
 
         return (
             <div>
-                <h1 id="tabelLabel" >Weather forecast</h1>
-                <p>This component demonstrates fetching data from the server.</p>
+                <h1 id="tabelLabel" >Public Repositories for User</h1>  
                 {contents}
             </div>
         );
     }
 
     async populateWeatherData() {
-        const response = await axios.post("http://localhost:63190/api/git-hub/get-user-repositories/edblackmo/6a507c8cec634e4783404089b464143407085a5e", { "uri": "https://api.github.com" })
+        const response = await axios.post(`http://localhost:63190/api/git-hub/get-user-repositories/${this.props.history.location.state.userName}/${this.props.history.location.state.token}`, { "uri": this.props.history.location.state.uri });
         const data = response.data;
         this.setState({ repos: data, loading: false });
-    }   
+    }
 }
 
